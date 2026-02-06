@@ -1,0 +1,6 @@
+*.py
+__pycache__
+requirements.txt
+pyproject.toml
+Makefile
+.python-version
