@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Modern Professional Theme (Dark Slate/Gray) */
+    /* Base: Slate 900 */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    /* Glass/Slate 800 for cards */
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary: Light Gray (Slate 300) per logo match request */
+    --primary: 212.7 26.8% 83.9%; /* Slate 300 */
+    --primary-foreground: 222.2 47.4% 11.2%; /* Slate 900 */
+
+    --secondary: 217 33% 17%; /* Slate 800 */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%; /* Slate 400 */
+
+    --accent: 173 80% 40%; /* Teal/Cyan */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 20%; /* Slate 700/800 */
+    --input: 217 33% 20%;
+    --ring: 217 33% 25%;
+
+    --radius: 0.5rem;
+
+    /* Chart Colors */
+    --chart-1: 212.7 26.8% 83.9%;  /* Slate 300 */
+    --chart-2: 173 80% 40%; /* Teal */
+    --chart-3: 199 89% 48%; /* Sky */
+    --chart-4: 280 65% 60%; /* Purple */
+    --chart-5: 340 75% 55%; /* Pink */
+  }
+
+  /* Force dark theme background style */
+  body {
+    @apply bg-slate-900 text-slate-50;
+    background-image: none; /* Remove old radial gradient */
+  }
+
+  .dark {
+    /* Identical to root/light for now to enforce consistency */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary: Light Gray (Slate 300) */
+    --primary: 212.7 26.8% 83.9%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 173 80% 40%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 217 33% 25%;
+    
+    --chart-1: 212.7 26.8% 83.9%;
+    --chart-2: 173 80% 40%;
+    --chart-3: 199 89% 48%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1, "tnum" 1;
+    font-optical-sizing: auto;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium;
+    line-height: 1.3;
+  }
+  
+  table {
+    font-variant-numeric: tabular-nums;
+    line-height: 1.4;
+  }
+}
