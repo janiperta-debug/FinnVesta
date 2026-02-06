@@ -37,9 +37,10 @@ const getExtensionConfig = (name: string): string => {
 
 	if (!extension) {
 		console.warn(`Extension ${name} not found`);
+		return JSON.stringify({});
 	}
 
-	return JSON.stringify(extension?.config);
+	return JSON.stringify(extension.config ?? {});
 };
 
 const buildVariables = () => {
@@ -82,11 +83,7 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			resolve: {
-				alias: {
-					"@": path.resolve(__dirname, "./src"),
-				},
-			},
+			"@": path.resolve(__dirname, "."),
 		},
 	},
 });

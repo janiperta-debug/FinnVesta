@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, LogOut, Settings, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useUser } from '@stackframe/react';
 import { stackClientApp } from 'app/auth';
+import { useSafeUser } from 'app/auth/use-safe-user';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 export const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const user = useUser();
+  const user = useSafeUser();
   const [isOpen, setIsOpen] = useState(false);
   
   const isLandingPage = location.pathname === '/';
@@ -17,13 +17,17 @@ export const Header = () => {
   const handleAuthClick = () => {
     if (user) {
       navigate('/portfolio');
-    } else {
+    } else if (stackClientApp) {
       window.location.href = stackClientApp.urls.signIn;
+    } else {
+      navigate('/auth/sign-in');
     }
   };
 
   const handleSignOut = async () => {
-    await stackClientApp.signOut();
+    if (stackClientApp) {
+      await stackClientApp.signOut();
+    }
   };
 
   const scrollToSection = (id: string) => {

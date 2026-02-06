@@ -18,31 +18,31 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "brain": ["./src/brain/index.ts"], // Kept for backwards compatibility
-      "brain/*": ["./src/brain/*"], // Kept for backwards compatibility
-      "types": ["./src/apiclient/data-contracts.ts"], // Kept for backwards compatibility
-      // "apiclient": ["./src/apiclient"], // Not exposing directly, import via "app" instead
-      "components/*": ["./src/components/*"],
-      "pages/*": ["./src/pages/*"],
-      "app": ["./src/app"],
-      "app/*": ["./src/app/*"],
-      "utils/*": ["./src/utils/*"],
-      "@/*": ["./src/*"],
-      "@/hooks/*": ["./src/extensions/shadcn/hooks/*"],
-      "@/components/hooks/*": ["./src/extensions/shadcn/hooks/*"],
-      "@/components/ui/*": ["./src/extensions/shadcn/components/*"]
+      "brain": ["./brain/index.ts"],
+      "brain/*": ["./brain/*"],
+      "types": ["./apiclient/data-contracts.ts"],
+      "components/*": ["./components/*"],
+      "pages/*": ["./pages/*"],
+      "app": ["./app"],
+      "app/*": ["./app/*"],
+      "utils/*": ["./utils/*"],
+      "@/*": ["./*"],
+      "@/hooks/*": ["./extensions/shadcn/hooks/*"],
+      "@/components/hooks/*": ["./extensions/shadcn/hooks/*"],
+      "@/components/ui/*": ["./extensions/shadcn/components/*"]
     }
   },
-  "include": ["env.d.ts", "src"],
+  "include": ["env.d.ts", "."],
   "exclude": [
-    "src/brain/Brain.ts",
-    "src/brain/BrainRoute.ts",
-    "src/brain/data-contracts.ts",
-    "src/brain/http-client.ts",
-    "src/apiclient/Apiclient.ts",
-    "src/apiclient/ApiclientRoute.ts",
-    "src/apiclient/data-contracts.ts",
-    "src/apiclient/http-client.ts"
+    "brain/Brain.ts",
+    "brain/BrainRoute.ts",
+    "brain/data-contracts.ts",
+    "brain/http-client.ts",
+    "apiclient/Apiclient.ts",
+    "apiclient/ApiclientRoute.ts",
+    "apiclient/data-contracts.ts",
+    "apiclient/http-client.ts",
+    "node_modules"
   ],
   "references": [
     {

@@ -8,6 +8,7 @@ import {
 import type * as React from "react";
 import { createContext, useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import { isStackAuthConfigured } from "./stack";
 
 type UserGuardContextType = {
   user: CurrentUser | CurrentInternalServerUser;
@@ -37,6 +38,16 @@ const writeToLocalStorage = (key: string, value: string) => {
 };
 
 export const UserGuard = (props: {
+  children: React.ReactNode;
+}) => {
+  if (!isStackAuthConfigured) {
+    return <>{props.children}</>;
+  }
+
+  return <UserGuardInner>{props.children}</UserGuardInner>;
+};
+
+const UserGuardInner = (props: {
   children: React.ReactNode;
 }) => {
   const app = useStackApp();
