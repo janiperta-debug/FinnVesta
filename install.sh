@@ -1,7 +1,11 @@
 #!/bin/bash
 
-uv venv
+corepack enable
 
-source .venv/bin/activate
+yarn set version stable
 
-uv sync --all-groups
+yarn install 
+
+yarn add date-fns@^4.1.0
+
+yarn dlx @yarnpkg/sdks vscode
