@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useUser } from "@stackframe/react";
+import { useSafeUser } from "app/auth/use-safe-user";
 import { useNavigate } from "react-router-dom";
 import { apiClient } from "app";
 import { ArrowLeft, Users, Building, Building2, TrendingUp, Plus, Mail, Euro, AlertCircle, Copy, Check, Trash2 } from "lucide-react";
@@ -86,7 +86,7 @@ interface BillingDashboard {
 
 export default function HallintaKäyttäjät() {
   const navigate = useNavigate();
-  const user = useUser();
+  const user = useSafeUser();
   const [users, setUsers] = useState<User[]>([]);
   const [organizations, setOrganizations] = useState<Organization[]>([]);
   const [billing, setBilling] = useState<BillingDashboard | null>(null);

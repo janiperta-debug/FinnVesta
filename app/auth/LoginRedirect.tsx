@@ -1,6 +1,7 @@
 import { useStackApp } from "@stackframe/react";
 import { Navigate } from "react-router-dom";
 import { identify } from "app/analytics";
+import { isStackAuthConfigured } from "./stack";
 
 const popFromLocalStorage = (key: string): string | null => {
   if (typeof window !== "undefined" && window.localStorage) {
@@ -12,12 +13,11 @@ const popFromLocalStorage = (key: string): string | null => {
   return null;
 };
 
-export const LoginRedirect = () => {
+const LoginRedirectWithStack = () => {
   const app = useStackApp();
 
   const queryParams = new URLSearchParams(window.location.search);
 
-  // Identify user in analytics if logged in
   const user = app.useUser();
   if (user) {
     identify(user.id, {
@@ -34,4 +34,12 @@ export const LoginRedirect = () => {
   }
 
   return <Navigate to="/" replace={true} />;
+};
+
+export const LoginRedirect = () => {
+  if (!isStackAuthConfigured) {
+    return <Navigate to="/" replace={true} />;
+  }
+
+  return <LoginRedirectWithStack />;
 };

@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { Building2, BarChart3, Calendar, Wrench, Settings, Shield, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useUser } from "@stackframe/react";
+import { useSafeUser } from "app/auth/use-safe-user";
 import { useState, useEffect } from "react";
 import { apiClient } from "app";
 import { Header } from "@/components/Header";
 
 export default function Portfolio() {
   const navigate = useNavigate();
-  const user = useUser();
+  const user = useSafeUser();
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {

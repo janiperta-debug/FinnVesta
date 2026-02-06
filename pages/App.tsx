@@ -8,13 +8,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { apiClient } from 'app';
 import { toast } from 'sonner';
-import { useUser } from '@stackframe/react';
-import { stackClientApp } from 'app/auth';
+  import { stackClientApp } from 'app/auth';
+  import { useSafeUser } from 'app/auth/use-safe-user';
 import { Header } from '@/components/Header';
 
 export default function App() {
   const navigate = useNavigate();
-  const user = useUser();
+  const user = useSafeUser();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -101,11 +101,13 @@ export default function App() {
   }, [user]);
 
   const handleAuthClick = () => {
-    if (user) {
-      navigate('/portfolio');
-    } else {
-      window.location.href = stackClientApp.urls.signIn;
-    }
+  if (user) {
+  navigate('/portfolio');
+  } else if (stackClientApp) {
+  window.location.href = stackClientApp.urls.signIn;
+  } else {
+  navigate('/auth/sign-in');
+  }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
