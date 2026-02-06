@@ -82,8 +82,11 @@ export default defineConfig({
 		},
 	},
 	resolve: {
-		alias: {
-			"@": path.resolve(__dirname, "."),
-		},
+		alias: [
+			{ find: "@/components/ui", replacement: path.resolve(__dirname, "extensions/shadcn/components") },
+			{ find: "@/hooks", replacement: path.resolve(__dirname, "extensions/shadcn/hooks") },
+			{ find: "@/components/hooks", replacement: path.resolve(__dirname, "extensions/shadcn/hooks") },
+			{ find: "@", replacement: path.resolve(__dirname, ".") },
+		],
 	},
 });
